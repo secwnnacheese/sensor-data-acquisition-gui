@@ -1,0 +1,51 @@
+[package]
+
+# `name`: Nama dari paket (proyek) Anda. Ini akan menjadi nama dari library atau executable yang dihasilkan.
+name = "sensor_app"
+
+# `version`: Versi saat ini dari paket Anda, mengikuti konvensi Semantic Versioning (Major.Minor.Patch).
+version = "0.0.1"
+
+# `edition`: Menentukan edisi Rust yang digunakan, yang memengaruhi fitur bahasa apa yang tersedia. 
+# "2021" adalah edisi modern yang stabil.
+edition = "2021"
+
+[dependencies]
+
+# `eframe`: Crate utama untuk membuat aplikasi GUI (Graphical User Interface) lintas platform. 
+# Ini adalah kerangka kerja di balik `egui`. Versi "0.27.2".
+eframe = "0.27.2"
+
+# `serde`: Kerangka kerja untuk serialisasi dan deserialisasi struktur data Rust secara efisien.
+# `features = ["derive"]` mengaktifkan makro `#[derive(Serialize, Deserialize)]` yang sangat memudahkan implementasi.
+serde = { version = "1.0", features = ["derive"] }
+
+# `chrono`: Crate untuk menangani tanggal dan waktu.
+# `features = ["serde"]` mengaktifkan integrasi dengan `serde` sehingga tipe data seperti `DateTime` dapat diserialisasi.
+chrono = { version = "0.4", features = ["serde"] }
+
+# `serialport`: Crate untuk menemukan, membuka, dan berkomunikasi dengan perangkat melalui port serial (misalnya, Arduino).
+serialport = "4.2.2"
+
+# `mongodb`: Driver resmi Rust untuk berinteraksi dengan database MongoDB.
+# `features = ["tokio-runtime"]` memungkinkan driver ini berjalan di atas runtime asinkron Tokio.
+# `features = ["bson-chrono-0_4"]` memungkinkan konversi otomatis antara tipe `chrono::DateTime` dan tipe `Bson::DateTime` MongoDB.
+mongodb = { version = "2.8.2", features = ["tokio-runtime", "bson-chrono-0_4"] }
+
+# `tokio`: Runtime asinkron untuk Rust. Diperlukan oleh `mongodb` untuk menangani operasi I/O database tanpa memblokir thread.
+# `features = ["full"]` mengaktifkan semua fitur dari tokio, termasuk networking, multithreading, dll.
+tokio = { version = "1", features = ["full"] }
+
+# `notify-rust`: Crate untuk mengirim notifikasi desktop native di berbagai sistem operasi (Linux, macOS, Windows).
+notify-rust = "4"
+
+# `rodio`: Crate untuk memutar audio. Digunakan di aplikasi ini untuk memainkan suara peringatan.
+rodio = "0.17"
+
+# `rand`: Crate untuk menghasilkan angka acak. Meskipun tidak terlihat jelas penggunaannya di kode yang diberikan, 
+# mungkin direncanakan untuk fitur masa depan atau dependensi dari dependensi lain.
+rand = "0.8"
+
+# `num-traits`: Menyediakan sekumpulan trait (seperti `Float`) untuk angka generik.
+# Berguna untuk menulis fungsi matematika yang dapat bekerja dengan berbagai tipe numerik (misal: f32, f64).
+num-traits = "0.2"

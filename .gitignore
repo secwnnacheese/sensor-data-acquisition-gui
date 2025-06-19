@@ -1,0 +1,11 @@
+# Direktori hasil kompilasi dan dependensi
+/target/
+
+# Catatan: Cargo.lock sebaiknya TIDAK diabaikan untuk aplikasi
+# karena ia mengunci versi dependensi untuk build yang konsisten.
+
+# Berkas yang dihasilkan oleh beberapa editor
+.idea/
+.vscode/
+*.swp
+*~
